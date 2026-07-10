@@ -54,6 +54,7 @@ This step introduces **recurrence and monitoring over time**, not just one-off a
 
 ## Files
 
-The implementation scaffold for this demo lives in the nested repo:
-- `lit-radar/`
+The implementation for this demo lives in the real literature-radar repo, mounted here as a submodule:
+- `lit-radar/` → `blakelash/literature-radar-skills`
+
 

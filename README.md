@@ -13,7 +13,7 @@ agent-workshop/
 ├── demo-2/
 ├── demo-3/
 ├── demo-4/
-│   └── lit-radar/   # nested git repo
+│   └── lit-radar/   # submodule -> literature-radar-skills
 └── demo-5/
 ```
 
@@ -60,7 +60,11 @@ Operationalize one central claim into a measurable question, run a notebook anal
 
 Package the literature-radar workflow into a reusable routine/repo with sources, scoring rubric, dedupe logic, and digest outputs.
 
+Implementation repo used here:
+- `demo-4/lit-radar/` → `blakelash/literature-radar-skills`
+
 ### Demo 5 — Adapt with Memory
 
 Turn the reusable routine into a persistent collaborator by remembering feedback, preferences, exclusions, and what the user has found interesting before.
+
 
