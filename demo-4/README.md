@@ -43,8 +43,9 @@ So the routine's job is: *"I loved the PTERi paper. Keep me alerted to new non-i
 Point Claude Code at the attached `lit-radar/` skills and give it a prompt like this (save as a scheduled routine / `/skill`, or run daily via cron):
 
 ```text
-Run my Literature Radar routine using the skills in ./lit-radar — follow their
-guidance for mining, ranking, and writing to Notion. Do one pass for the last 2 days.
+Run my Literature Radar routine using the skills in ./lit-radar
+(github.com/blakelash/literature-radar-skills) — follow their guidance for mining,
+ranking, and writing to Notion. Do one pass for the last 2 days.
 
 Make yourself a home in my Notion: on the first run, create your own page and a
 Literature Radar database under it and remember them; on later runs, reuse them.
@@ -119,6 +120,7 @@ You don't have to start from scratch — there are large, open libraries of scie
 ## Audience question
 
 What would you want your own reusable routine to watch or produce?
+
 
 
 
