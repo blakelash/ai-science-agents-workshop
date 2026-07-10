@@ -20,15 +20,16 @@ Take a single paper and turn it into a structured, slide-ready understanding a s
 
 ## Suggested Claude prompt
 
-> Read the attached paper and help me turn it into a workshop demo for scientific agents. Please do four things: (1) summarize the core claim in 5-7 bullets, (2) identify the specific steps that are deterministic pipeline components versus places where an agent or copilot could add judgment, (3) propose one bounded, realistic live demo based on this paper that could be reproduced in a workshop setting, and (4) list the validation checks and failure modes I should mention if I present this as an example of agentic science tooling. Keep the output practical and slide-ready.
+> Read the attached paper carefully and help me understand it as a working scientist would. Please: (1) state the central claim in 5–7 bullets, (2) explain the key methods and what evidence actually supports the main result, (3) call out the most important limitations, caveats, or places the conclusions may outrun the data, and (4) list the open questions or follow-up experiments this paper raises. For every substantive claim, cite the specific figure, table, or section it comes from, and flag anything you are unsure about rather than guessing.
 
 ## Artifact
 
 A **paper brief** covering:
-- core claim in 5–7 bullets
-- deterministic pipeline steps vs. judgment steps
-- one bounded, reproducible demo idea
-- validation checks and failure modes
+- central claim in 5–7 bullets
+- key methods and the evidence behind the main result
+- important limitations and caveats
+- open questions / follow-up experiments
+- each claim tied to a specific figure, table, or section
 
 ## Check / failure mode
 
@@ -44,4 +45,5 @@ A **paper brief** covering:
 This is the foundation of the arc: **read one paper well.**
 
 Every later demo builds on this — you cannot contextualize, test, monitor, or remember what you never accurately read in the first place.
+
 
