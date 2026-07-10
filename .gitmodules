@@ -1,0 +1,3 @@
+[submodule "demo-4/lit-radar"]
+	path = demo-4/lit-radar
+	url = https://github.com/blakelash/ai-science-agents-workshop-lit-radar.git
