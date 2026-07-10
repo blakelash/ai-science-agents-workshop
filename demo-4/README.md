@@ -34,36 +34,54 @@ That repo packages the minimal core: mining papers (journal RSS + preprints + Op
 
 ## Example Claude Code routine prompt
 
-A routine is just a thin wrapper that calls the modules on a schedule. Point Claude Code at the `lit-radar/` skills and give it a prompt like this (save as a scheduled routine / `/skill`, or run daily via cron):
+A routine is just a thin wrapper that calls the modules on a schedule — but the *lens* is personal. This example is framed around a real paper: **PTER** (Wei et al., *Nature* 2024, [s41586-024-07801-6](https://doi.org/10.1038/s41586-024-07801-6)) showed that the orphan enzyme PTER hydrolyzes N-acetyltaurine and that blocking it (Pter knockout / NAT administration) suppresses feeding and diet-induced obesity via GFRAL — a weight-loss mechanism with **nothing to do with GLP-1**.
+
+So the routine's job is: *"I thought PTER was a cool paper. Keep me alerted to new non-GLP1 obesity advances — especially anything moving PTER toward a drug, like an oral PTER inhibitor."*
+
+Point Claude Code at the `lit-radar/` skills and give it a prompt like this (save as a scheduled routine / `/skill`, or run daily via cron):
 
 ```text
-You are running the Literature Radar monitoring routine. The skills and specs
-are in ./lit-radar (the literature-radar-skills repo). Do the following once:
+You are running my Literature Radar monitoring routine. The skills and specs are
+in ./lit-radar (the literature-radar-skills repo).
+
+MY LENS (why I care): I loved the PTER paper (Nature 2024, s41586-024-07801-6) —
+PTER / N-acetyltaurine / GFRAL is an anti-obesity mechanism that is NOT GLP-1-based.
+I want to be alerted to advances on the non-GLP1 obesity frontier, and especially
+to anything pushing this axis toward a therapeutic: a PTER inhibitor (bonus if oral),
+N-acetyltaurine or taurine-axis pharmacology, GFRAL/GDF15 agonists, or other novel
+central/peripheral appetite or energy-balance targets. DEPRIORITIZE incremental
+GLP-1 / GIP / amylin analog papers unless they reveal genuinely new biology.
+
+Do the following once:
 
 1. MINE — using docs/data-sources.md and templates/journal_feeds.json, fetch the
    last 2 days of new papers from the journal RSS feeds (run
    scripts/fetch_journal_rss.py), plus bioRxiv/medRxiv (version==1 only) and
-   OpenAlex for the configured journals. Normalize every item to
-   templates/candidate-schema.json and dedupe by DOI → canonical URL → title.
+   OpenAlex. Normalize every item to templates/candidate-schema.json and dedupe
+   by DOI → canonical URL → title.
 
-2. RANK — apply docs/ranking-rubric.md. First the recall-first lexical prefilter
-   to cut volume, then the four-question triage on survivors. Keep only Tier 1
-   and Tier 2; drop everything else. Emit the fields in templates/scored-schema.json,
-   and for each paper write a 2-sentence `why` (strongest positive + limiting caveat).
+2. RANK — apply docs/ranking-rubric.md, but bias the lens toward MY interest above:
+   non-GLP1 obesity / appetite / energy-balance biology with a plausible, undeveloped
+   therapeutic angle and causal evidence. Run the recall-first prefilter, then the
+   four-question triage on survivors. Keep only Tier 1 and Tier 2; drop the rest.
+   Emit the fields in templates/scored-schema.json, and for each paper write a
+   2-sentence `why` (strongest positive + limiting caveat). A credible step toward
+   an oral PTER inhibitor is an automatic Tier 1.
 
-3. WRITE — follow docs/notion-spec.md exactly. If the Literature Radar database
-   does not exist yet, create it (title-only shell → PATCH schema onto the data
-   source → rows via data_source_id). Add one row per retained paper. ALWAYS also
-   write a local digest.md ordered by tier, then Score descending.
+3. WRITE — follow docs/notion-spec.md exactly. If the Literature Radar database does
+   not exist yet, create it (title-only shell → PATCH schema onto the data source →
+   rows via data_source_id). Add one row per retained paper. ALWAYS also write a local
+   digest.md ordered by tier, then Score descending.
 
 Rules: lens = new/underexploited biology with an undeveloped therapeutic angle and
 causal evidence — not "good paper," not journal prestige. Source label = the journal,
 never "OpenAlex." If NOTION_API_KEY is missing, skip the Notion write but still
-produce digest.md. Finish by printing a one-line summary: "X Tier-1, Y Tier-2 from
-N scanned."
+produce digest.md. Finish with a one-line summary: "X Tier-1, Y Tier-2 from N scanned."
 ```
 
 Keep the runner thin: it orchestrates mine → rank → write and nothing more. The scientific logic stays in the skills, not the routine. See `lit-radar/examples/runners/` for the same idea under Hermes cron and a plain script.
+
+> Note the deliberate limitation: this routine re-reads your lens from the prompt every run — it does **not** remember your reactions to yesterday's digest. Teaching it to learn "you already showed me that / more like this one" is exactly the jump to Demo 5.
 
 ## Skills — a primer
 
@@ -117,6 +135,7 @@ You don't have to start from scratch — there are large, open libraries of scie
 ## Audience question
 
 What would you want your own reusable routine to watch or produce?
+
 
 
 
