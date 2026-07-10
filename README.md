@@ -1,70 +1,54 @@
-# Agent Workshop
+# AI Agents in Science Workshop
 
-Scaffold repo for the scientific agents workshop.
+A hands-on companion repo for the **AI Agents in Science** workshop.
+
+It walks through a single narrative: **from reading one paper to building a persistent research collaborator.** Each demo is a self-contained step with its own README, artifact, and discussion prompt.
+
+## The narrative spine
+
+> **Read → Contextualize → Decompose → Monitor → Adapt**
+
+| # | Demo | Question it answers |
+|---|------|---------------------|
+| 1 | **Read** | Can an agent genuinely *understand* one paper? |
+| 2 | **Contextualize** | Can it situate that paper in the wider field? |
+| 3 | **Decompose + Traceable Data Analysis** | Can it test a claim with analysis you can *trust*? |
+| 4 | **Monitor / Reusable Routine** | Can it become a repeatable, inspectable workflow? |
+| 5 | **Adapt with Memory** | Can it become a collaborator that *remembers*? |
+
+Each step adds one new capability the previous step lacked — the arc matters more than any single tool.
 
 ## Repo structure
 
 ```text
-agent-workshop/
+ai-agents-in-science-workshop/
 ├── README.md
-├── slides/
-├── demo-1/
+├── slides/                     # deck files
+├── demo-1/                     # Read
+│   ├── README.md
 │   └── paper.pdf
-├── demo-2/
-├── demo-3/
-├── demo-4/
-│   └── lit-radar/   # submodule -> literature-radar-skills
-└── demo-5/
+├── demo-2/                     # Contextualize
+│   └── README.md
+├── demo-3/                     # Decompose + Traceable Data Analysis
+│   └── README.md
+├── demo-4/                     # Monitor / Reusable Routine
+│   ├── README.md
+│   └── lit-radar/              # submodule -> literature-radar-skills
+└── demo-5/                     # Adapt with Memory
+    └── README.md
 ```
 
-## Slides
+## How to use this repo
 
-Put deck files in `slides/`.
+1. Start at `demo-1/` and work through the demos in order.
+2. Each demo README states its **surface**, **scientific job**, **artifact**, and **failure mode / check**.
+3. The slides in `slides/` follow the same arc.
 
-## Canonical demo arc
+## Demos at a glance
 
-Aligned to the Notion workshop outlines:
-
-1. **Demo 1 — Read**
-2. **Demo 2 — Contextualize**
-3. **Demo 3 — Decompose + Traceable Data Analysis**
-4. **Demo 4 — Monitor / Reusable Routine**
-5. **Demo 5 — Adapt with Memory**
-
-Narrative spine:
-
-> **Read → Contextualize → Decompose → Monitor → Adapt**
->
-> Or in words: **from reading one paper to building a persistent research collaborator**.
-
-## Demos
-
-### Demo 1 — Read
-
-Files:
-- `demo-1/paper.pdf`
-
-Suggested Claude prompt:
-
-> Read the attached paper and help me turn it into a workshop demo for scientific agents. Please do four things: (1) summarize the core claim in 5-7 bullets, (2) identify the specific steps that are deterministic pipeline components versus places where an agent or copilot could add judgment, (3) propose one bounded, realistic live demo based on this paper that could be reproduced in a workshop setting, and (4) list the validation checks and failure modes I should mention if I present this as an example of agentic science tooling. Keep the output practical and slide-ready.
-
-### Demo 2 — Contextualize
-
-Take the same paper and place it in the broader field with retrieval-grounded context: novelty, related work, competition, and uncertainty.
-
-### Demo 3 — Decompose + Traceable Data Analysis
-
-Operationalize one central claim into a measurable question, run a notebook analysis, and produce a traceable evidence memo that links conclusions back to figures, tables, notebook cells, datasets, and assumptions.
-
-### Demo 4 — Monitor / Reusable Routine
-
-Package the literature-radar workflow into a reusable routine/repo with sources, scoring rubric, dedupe logic, and digest outputs.
-
-Implementation repo used here:
-- `demo-4/lit-radar/` → `blakelash/literature-radar-skills`
-
-### Demo 5 — Adapt with Memory
-
-Turn the reusable routine into a persistent collaborator by remembering feedback, preferences, exclusions, and what the user has found interesting before.
-
+- **[Demo 1 — Read](demo-1/README.md):** turn one paper into a structured, slide-ready understanding.
+- **[Demo 2 — Contextualize](demo-2/README.md):** place the paper in the field with retrieval-grounded context.
+- **[Demo 3 — Decompose + Traceable Data Analysis](demo-3/README.md):** operationalize a claim and produce a traceable evidence memo.
+- **[Demo 4 — Monitor / Reusable Routine](demo-4/README.md):** package the literature-radar workflow into a reusable routine (`demo-4/lit-radar/` → `literature-radar-skills`).
+- **[Demo 5 — Adapt with Memory](demo-5/README.md):** turn the routine into a persistent collaborator that learns from feedback.
 
