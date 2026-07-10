@@ -1,6 +1,6 @@
 # Demo 5 — Adapt with Memory
 
-**Surface:** Hermes · *other options: orchestration + memory systems*
+**Surface:** Hermes · *other options: [OpenClaw](https://openclaw.ai), [Kosmos](https://edisonscientific.com/news/announcing-kosmos) (Edison Scientific), [Claude Tag](https://claude.com/resources/tutorials/best-practices-using-claude-tag), [Gemini Enterprise Agents](https://cloud.google.com/gemini-enterprise/agents), custom agent systems, etc.*
 
 **New capability:** memory — the system learns your preferences and adapts.
 
@@ -70,5 +70,6 @@ Docs: [Hermes memory](https://hermes-agent.nousresearch.com/docs/user-guide/feat
 ## Audience question
 
 What feedback would you actually be willing to give a system so that it improves over time?
+
 
 
