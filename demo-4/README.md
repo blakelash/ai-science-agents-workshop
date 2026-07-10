@@ -47,7 +47,8 @@ Run my Literature Radar routine using the skills in ./lit-radar
 (github.com/blakelash/literature-radar-skills) — follow their guidance for mining,
 ranking, and writing to Notion. Do one pass for the last 2 days.
 
-Make yourself a home in my Notion: on the first run, create your own page and a
+Make yourself a home in my Notion called "Claude" and a page underneath
+for this scanner, do not touch or look at other pages: on the first run, create your own page and a
 Literature Radar database under it and remember them; on later runs, reuse them.
 Before adding anything, check Notion for papers you already recorded and skip those —
 only add genuinely new ones.
