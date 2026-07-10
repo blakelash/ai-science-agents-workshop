@@ -32,7 +32,57 @@ The implementation for this demo lives in the real literature-radar repo, mounte
 
 That repo packages the minimal core: mining papers, ranking/triage, Notion sync, and an editable topic-lens that captures preferences over time. It sets up Demo 5.
 
+## Skills — a primer
+
+A **skill** is a reusable, packaged procedure an agent can load when it's relevant. In practice it's a folder with a `SKILL.md` file: YAML frontmatter (a `name` and a `description` of *when to use it*) plus a Markdown body with the step-by-step instructions, and optionally supporting `scripts/`, `references/`, and `assets/`.
+
+```markdown
+---
+name: bulk-rnaseq-de
+description: Run a bulk RNA-seq differential-expression analysis (FASTQ → counts → DE → enrichment). Use when the user has RNA-seq count data and wants DE results.
+---
+
+## Steps
+1. QC and align/quantify (or start from a counts matrix)
+2. Normalize and run differential expression (e.g. PyDESeq2)
+3. Functional enrichment (ORA / GSEA)
+4. Write a short results memo with the key genes and pathways
+```
+
+### Why skills matter (especially for Demo 4)
+
+- **They encode a workflow once** so it runs the same way every time — this is exactly what turns an ad-hoc chat into a *reusable routine*.
+- **Progressive disclosure:** only the short description sits in context by default; the full body loads only when the skill is actually triggered, so a big library costs almost nothing until used.
+- **Composability:** an agent can combine several small, focused skills for one task. Many small skills beat one giant skill.
+- **Portability:** skills are just Markdown files, so the same skill often works across agents.
+
+### When to make one
+
+Make a skill when you keep pasting the same instructions or checklist into chat, when a procedure has become stable enough to reuse, or when you want a workflow to run identically for you and your collaborators. Keep each skill **focused on one workflow**, write a **specific description** (the agent uses it to decide when to load the skill), and start with plain instructions before adding scripts.
+
+### The open standard
+
+Skills follow an open **Agent Skills** specification (https://agentskills.io/), so a well-written `SKILL.md` works across Claude Code, Cursor, Codex, Gemini CLI, OpenClaw, Hermes, and more — not just one vendor.
+
+Docs:
+- **Agent Skills overview (Anthropic):** https://platform.claude.com/docs/en/agents-and-tools/agent-skills/overview
+- **Creating custom skills:** https://claude.com/docs/skills/how-to
+- **Authoring best practices:** https://platform.claude.com/docs/en/agents-and-tools/agent-skills/best-practices
+- **Open spec:** https://agentskills.io/
+
+### Open-source scientific skill libraries
+
+You don't have to start from scratch — there are large, open libraries of science skills you can install and adapt:
+
+- **Scientific Agent Skills** (K-Dense, MIT, ~148 skills + 100+ databases; works with Claude Code, Cursor, Codex, Hermes, etc.): https://github.com/K-Dense-AI/scientific-agent-skills
+- **SciAgent-Skills** (199 bioinformatics/life-science skills — RNA-seq, single-cell, proteomics, drug discovery): https://github.com/jaechang-hits/SciAgent-Skills
+- **bioSkills** (GPTomics — bioinformatics skills across many categories): https://github.com/GPTomics/bioSkills
+- **awesome-bio-agent-skills** (curated index aggregating skills from many repos): https://github.com/BioTender-max/awesome-bio-agent-skills
+
+> The literature-radar submodule in this demo is itself a small skill suite (mining / triage / Notion-sync / topic-lens) — a concrete example of packaging a scientific workflow as skills.
+
 ## Audience question
 
 What would you want your own reusable routine to watch or produce?
+
 
