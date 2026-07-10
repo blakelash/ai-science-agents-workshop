@@ -8,6 +8,18 @@
 
 Break a paper's claims down and analyze them against public data: are there discrepancies or agreements? Produce a **traceable evidence memo** where every conclusion links back to a cell, figure, or dataset.
 
+## Example prompt
+
+```text
+Read this paper on PTER inhibition for obesity (DOI: 10.64898/2026.01.26.701829).
+Extract the central mechanistic claim, then run an independent extension analysis
+to test whether publicly available data support the proposed mechanism. Use
+subagents as appropriate — for example, fanning out one agent per analysis to be
+done.
+```
+
+Note what makes this Demo 3 and not Demo 2: it's not "summarize" or "contextualize," it's *test the claim against data the agent goes and analyzes itself* — and it explicitly invites **fan-out**, one subagent per independent analysis, with the results converging into one traceable memo.
+
 ## Seven-box lens
 
 | Box | Answer |
@@ -82,5 +94,6 @@ This is where the workflow becomes about **specialization + verification**, not 
 ## Audience question
 
 If an agent says the data support a paper's central conclusion, what would you want to inspect before trusting it?
+
 
 
