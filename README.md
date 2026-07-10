@@ -24,6 +24,13 @@ Each step adds one new capability the previous step lacked — the arc matters m
 ai-agents-in-science-workshop/
 ├── README.md
 ├── slides/                     # deck files
+├── docs/                       # the mental models behind the talk
+│   ├── seven-box-lens.md       # the core lens for any workflow
+│   ├── when-to-use-what.md     # variation × verifiability decision grid
+│   ├── glossary.md             # shared vocabulary
+│   └── trustworthy-agents.md   # what the demos had in common
+├── templates/
+│   └── seven-box-template.md   # fill-in template for your own task
 ├── demo-1/                     # Read
 │   ├── README.md
 │   └── paper.pdf
@@ -40,9 +47,16 @@ ai-agents-in-science-workshop/
 
 ## How to use this repo
 
-1. Start at `demo-1/` and work through the demos in order.
-2. Each demo README states its **surface**, **scientific job**, **artifact**, and **failure mode / check**.
-3. The slides in `slides/` follow the same arc.
+1. Read the two core mental models first: the **[seven-box lens](docs/seven-box-lens.md)** and the **[when-to-use-what grid](docs/when-to-use-what.md)**.
+2. Work through `demo-1/` … `demo-5/` in order — each is a filled-in seven-box card for a real scientific task.
+3. Use **[templates/seven-box-template.md](templates/seven-box-template.md)** to sketch one workflow from your own work.
+4. The slides in `slides/` follow the same arc.
+
+## Core idea
+
+> **Agents are useful when scientific work is variable but verifiable.**
+
+The demos are trustworthy for one reason: they can be *checked*. See **[docs/trustworthy-agents.md](docs/trustworthy-agents.md)**.
 
 ## Demos at a glance
 
@@ -51,4 +65,5 @@ ai-agents-in-science-workshop/
 - **[Demo 3 — Decompose + Traceable Data Analysis](demo-3/README.md):** operationalize a claim and produce a traceable evidence memo.
 - **[Demo 4 — Monitor / Reusable Routine](demo-4/README.md):** package the literature-radar workflow into a reusable routine (`demo-4/lit-radar/` → `literature-radar-skills`).
 - **[Demo 5 — Adapt with Memory](demo-5/README.md):** turn the routine into a persistent collaborator that learns from feedback.
+
 

@@ -1,22 +1,26 @@
 # Demo 5 — Adapt with Memory
 
-## Surface
+**Surface:** Hermes · *other options: orchestration + memory systems*
 
-Hermes.
+**New capability:** memory — the system learns your preferences and adapts.
 
-## Scientific job
+## Goal
 
-Turn the reusable routine from Demo 4 into a **persistent collaborator** by remembering feedback, preferences, exclusions, and what the user has found interesting before.
+A routine *repeats*; a collaborator *remembers and adapts*. Turn the Demo 4 routine into a persistent collaborator that carries feedback, preferences, and exclusions across runs.
 
-## Why this new surface is needed
+## Seven-box lens
 
-A reusable routine can repeat instructions, but it does not naturally maintain:
-- durable memory
-- feedback history
-- evolving user preferences
-- cross-run adaptation
+| Box | Answer |
+|---|---|
+| **Inputs** — what goes in? | Digests + my feedback over time |
+| **Agent needs** — what must it do? | Store, recall, and apply preferences |
+| **Tools / access** — what can it touch? | Memory + the monitoring routine |
+| **Artifact** — what appears at the end? | A before/after shortlist, with reasons |
+| **Check** — how do we verify it? | Feedback visibly changes the output |
+| **Escalation** — when does a human take over? | When preferences conflict or drift |
+| **Failure modes** — what does going wrong look like? | Decorative memory — it exists but nothing changes; or overfitting one old preference |
 
-## Capability contrast
+## Reusable routine vs. collaborator
 
 | Capability | Reusable routine | Hermes / memory layer |
 |---|---|---|
@@ -25,28 +29,13 @@ A reusable routine can repeat instructions, but it does not naturally maintain:
 | Feedback history | awkward / manual | yes |
 | Cross-run adaptation | limited | yes |
 
-## Artifact
+## What is new here
 
-A before/after comparison:
-- generic shortlist
-- feedback-informed personalized shortlist
+This demo introduces **memory + adaptation**. The point is not recurring automation — it is relationship-building over time. The system becomes more aligned with the scientist's taste and workflow: reject review articles, prefer human genetic support, care about structural tractability, deprioritize mouse-only incrementals — and it should be able to *show you* exactly what prior feedback changed.
 
-## Check / failure mode
-
-- **Failure mode:** memory exists but nothing meaningful changes, or the system overfits one old preference
-- **Check:** show exactly what prior feedback changed, for example:
-  - reject review articles
-  - prefer human genetic support
-  - care about structural tractability
-  - deprioritize mouse-only incrementals
+Hermes is a top-level orchestrator that is persistent and durable: memory, skills, state, tool use, and subagents, reachable across many surfaces. It generates memory, skills, and tasks on demand, and uses your feedback to improve skills so later tasks get easier.
 
 ## Audience question
 
-- What feedback would you actually be willing to give a system so that it improves over time?
-
-## What is new here
-
-This demo introduces **memory + adaptation**.
-
-The point is not just recurring automation. The point is relationship-building over time: the system becomes more aligned with the scientist’s taste and workflow.
+What feedback would you actually be willing to give a system so that it improves over time?
 

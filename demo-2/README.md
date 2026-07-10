@@ -1,50 +1,30 @@
 # Demo 2 — Contextualize
 
-## Surface
+**Surface:** Claude Cowork + Paperclip · *other options: NotebookLM, Elicit, PaperQA2 / Edison Lit*
 
-Claude Cowork / retrieval workspace.
+**New capability:** tool use — content retrieval via an MCP server.
 
-## Scientific job
+## Goal
 
-Take the paper from Demo 1 and place it in the broader field.
+Place the paper in its wider scientific context: novelty, related work, competition, and uncertainty.
 
-## Inputs
+## Seven-box lens
 
-- paper from Demo 1
-- literature-context questions
-
-## What the system needs
-
-- retrieval-grounded scientific context
-
-## Tools / access needed
-
-- citation context
-- related papers
-- target / pathway / disease resources as needed
-
-## Artifact
-
-A **context memo** covering:
-- novelty
-- related work
-- competition
-- uncertainty
-
-## Check / failure mode
-
-- **Failure mode:** false novelty or invented outside context
-- **Check:** require retrieval evidence and citations for the contextual claims that matter
-
-## Audience question
-
-- What outside context would most change your opinion of a new paper?
+| Box | Answer |
+|---|---|
+| **Inputs** — what goes in? | The paper + literature retrieval |
+| **Agent needs** — what must it do? | Search, compare, and cite related work |
+| **Tools / access** — what can it touch? | Web + literature search |
+| **Artifact** — what appears at the end? | A context memo with citations |
+| **Check** — how do we verify it? | Citations resolve to real papers |
+| **Escalation** — when does a human take over? | Before repeating any novelty claim |
+| **Failure modes** — what does going wrong look like? | False novelty, invented context |
 
 ## What is new here
 
-This is the jump from:
-- **Demo 1:** “read this paper well”
-- **Demo 2:** “situate this paper in the field”
+This is the jump from *"read this paper well"* to *"situate this paper in the field."* The point is not better summarization — it is that the paper alone is almost never enough context for scientific judgment. This is also the first demo where the agent uses a **tool** (retrieval via MCP) rather than just reasoning over what it was handed.
 
-The point is not just better summarization. The point is that the paper alone is almost never enough context for scientific judgment.
+## Audience question
+
+What outside context would most change your opinion of a new paper?
 
