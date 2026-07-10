@@ -34,52 +34,31 @@ That repo packages the minimal core: mining papers (journal RSS + preprints + Op
 
 ## Example Claude Code routine prompt
 
-A routine is just a thin wrapper that calls the modules on a schedule — but the *lens* is personal. This example is framed around a real paper: **PTER** (Wei et al., *Nature* 2024, [s41586-024-07801-6](https://doi.org/10.1038/s41586-024-07801-6)) showed that the orphan enzyme PTER hydrolyzes N-acetyltaurine and that blocking it (Pter knockout / NAT administration) suppresses feeding and diet-induced obesity via GFRAL — a weight-loss mechanism with **nothing to do with GLP-1**.
+A routine is just a thin wrapper: the skills in `lit-radar/` carry all the how-to (mining, ranking, Notion), so the prompt only has to supply **your lens** and say "follow the skills."
 
-So the routine's job is: *"I thought PTER was a cool paper. Keep me alerted to new non-GLP1 obesity advances — especially anything moving PTER toward a drug, like an oral PTER inhibitor."*
+This example is framed around a real paper: **PTERi** — a first-in-class small-molecule PTER inhibitor ([Long lab, bioRxiv 2026](https://www.biorxiv.org/content/10.64898/2026.01.26.701829v1)). PTER is an amidohydrolase that degrades the appetite-suppressing metabolite N-acetyltaurine; inhibiting it reduces feeding, **boosts GLP-1-RA weight loss, and prevents regain after the GLP-1 drug is stopped**. It's a novel *non-incretin* obesity mechanism — differentiated from, and complementary to, the crowded GLP-1 field.
 
-Point Claude Code at the `lit-radar/` skills and give it a prompt like this (save as a scheduled routine / `/skill`, or run daily via cron):
+So the routine's job is: *"I loved the PTERi paper. Keep me alerted to new non-incretin obesity biology and anything advancing druggable metabolite/enzyme axes like this one."*
+
+Point Claude Code at the attached `lit-radar/` skills and give it a prompt like this (save as a scheduled routine / `/skill`, or run daily via cron):
 
 ```text
-You are running my Literature Radar monitoring routine. The skills and specs are
-in ./lit-radar (the literature-radar-skills repo).
+Run my Literature Radar routine using the skills in ./lit-radar — follow their
+guidance for mining, ranking, and writing to Notion. Do one pass for the last 2 days.
 
-MY LENS (why I care): I loved the PTER paper (Nature 2024, s41586-024-07801-6) —
-PTER / N-acetyltaurine / GFRAL is an anti-obesity mechanism that is NOT GLP-1-based.
-I want to be alerted to advances on the non-GLP1 obesity frontier, and especially
-to anything pushing this axis toward a therapeutic: a PTER inhibitor (bonus if oral),
-N-acetyltaurine or taurine-axis pharmacology, GFRAL/GDF15 agonists, or other novel
-central/peripheral appetite or energy-balance targets. DEPRIORITIZE incremental
-GLP-1 / GIP / amylin analog papers unless they reveal genuinely new biology.
+MY LENS: I loved the PTERi paper (small-molecule PTER inhibitor, bioRxiv 2026,
+10.64898/2026.01.26.701829). I want novel NON-INCRETIN obesity / appetite /
+energy-balance biology with a real druggable handle and causal evidence —
+especially druggable metabolite or enzyme axes (like PTER / N-acetyltaurine) and
+anything that complements or de-risks weight-loss beyond GLP-1. Deprioritize
+incremental GLP-1 / GIP / amylin analog papers unless they show genuinely new biology.
+A credible new PTER-axis or non-incretin obesity drug lead is an automatic Tier 1.
 
-Do the following once:
-
-1. MINE — read the literature-radar skill. Using its references/data-sources.md and
-   assets/journal_feeds.json, fetch the last 2 days of new papers from the journal RSS
-   feeds (run scripts/fetch_journal_rss.py), plus bioRxiv/medRxiv (version==1 only) and
-   OpenAlex. Normalize every item to assets/candidate-schema.json and dedupe by
-   DOI → canonical URL → title.
-
-2. RANK — read the literature-radar-triage skill and apply its references/ranking-rubric.md,
-   but bias the lens toward MY interest above: non-GLP1 obesity / appetite / energy-balance
-   biology with a plausible, undeveloped therapeutic angle and causal evidence. Run the
-   recall-first prefilter, then the four-question triage on survivors. Keep only Tier 1 and
-   Tier 2; drop the rest. Emit the fields in assets/scored-schema.json, and for each paper
-   write a 2-sentence `why` (strongest positive + limiting caveat). A credible step toward
-   an oral PTER inhibitor is an automatic Tier 1.
-
-3. WRITE — read the literature-radar-notion-sync skill and follow its references/notion-spec.md
-   exactly. If the Literature Radar database does not exist yet, create it (title-only shell →
-   PATCH schema onto the data source → rows via data_source_id). Add one row per retained
-   paper. ALWAYS also write a local digest.md ordered by tier, then Score descending.
-
-Rules: lens = new/underexploited biology with an undeveloped therapeutic angle and
-causal evidence — not "good paper," not journal prestige. Source label = the journal,
-never "OpenAlex." If NOTION_API_KEY is missing, skip the Notion write but still
-produce digest.md. Finish with a one-line summary: "X Tier-1, Y Tier-2 from N scanned."
+If NOTION_API_KEY is missing, skip the Notion write but still produce digest.md.
+End with a one-line summary: "X Tier-1, Y Tier-2 from N scanned."
 ```
 
-Keep the runner thin: it orchestrates mine → rank → write and nothing more. The scientific logic stays in the skills, not the routine. See `lit-radar/skills/research/literature-radar/references/runner-examples.md` for the same idea under Hermes cron and a plain script.
+That's the whole point of packaging the workflow as skills: the runner prompt stays short and personal, while the reusable logic lives in `lit-radar/`. See `lit-radar/skills/research/literature-radar/references/runner-examples.md` for the same routine under Hermes cron or a plain script.
 
 > Note the deliberate limitation: this routine re-reads your lens from the prompt every run — it does **not** remember your reactions to yesterday's digest. Teaching it to learn "you already showed me that / more like this one" is exactly the jump to Demo 5.
 
@@ -135,6 +114,7 @@ You don't have to start from scratch — there are large, open libraries of scie
 ## Audience question
 
 What would you want your own reusable routine to watch or produce?
+
 
 
 
