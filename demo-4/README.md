@@ -46,6 +46,11 @@ Point Claude Code at the attached `lit-radar/` skills and give it a prompt like 
 Run my Literature Radar routine using the skills in ./lit-radar — follow their
 guidance for mining, ranking, and writing to Notion. Do one pass for the last 2 days.
 
+Make yourself a home in my Notion: on the first run, create your own page and a
+Literature Radar database under it and remember them; on later runs, reuse them.
+Before adding anything, check Notion for papers you already recorded and skip those —
+only add genuinely new ones.
+
 MY LENS: I loved the PTERi paper (small-molecule PTER inhibitor, bioRxiv 2026,
 10.64898/2026.01.26.701829). I want novel NON-INCRETIN obesity / appetite /
 energy-balance biology with a real druggable handle and causal evidence —
@@ -114,6 +119,7 @@ You don't have to start from scratch — there are large, open libraries of scie
 ## Audience question
 
 What would you want your own reusable routine to watch or produce?
+
 
 
 
