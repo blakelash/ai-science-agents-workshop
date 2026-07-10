@@ -54,24 +54,24 @@ GLP-1 / GIP / amylin analog papers unless they reveal genuinely new biology.
 
 Do the following once:
 
-1. MINE — using docs/data-sources.md and templates/journal_feeds.json, fetch the
-   last 2 days of new papers from the journal RSS feeds (run
-   scripts/fetch_journal_rss.py), plus bioRxiv/medRxiv (version==1 only) and
-   OpenAlex. Normalize every item to templates/candidate-schema.json and dedupe
-   by DOI → canonical URL → title.
+1. MINE — read the literature-radar skill. Using its references/data-sources.md and
+   assets/journal_feeds.json, fetch the last 2 days of new papers from the journal RSS
+   feeds (run scripts/fetch_journal_rss.py), plus bioRxiv/medRxiv (version==1 only) and
+   OpenAlex. Normalize every item to assets/candidate-schema.json and dedupe by
+   DOI → canonical URL → title.
 
-2. RANK — apply docs/ranking-rubric.md, but bias the lens toward MY interest above:
-   non-GLP1 obesity / appetite / energy-balance biology with a plausible, undeveloped
-   therapeutic angle and causal evidence. Run the recall-first prefilter, then the
-   four-question triage on survivors. Keep only Tier 1 and Tier 2; drop the rest.
-   Emit the fields in templates/scored-schema.json, and for each paper write a
-   2-sentence `why` (strongest positive + limiting caveat). A credible step toward
+2. RANK — read the literature-radar-triage skill and apply its references/ranking-rubric.md,
+   but bias the lens toward MY interest above: non-GLP1 obesity / appetite / energy-balance
+   biology with a plausible, undeveloped therapeutic angle and causal evidence. Run the
+   recall-first prefilter, then the four-question triage on survivors. Keep only Tier 1 and
+   Tier 2; drop the rest. Emit the fields in assets/scored-schema.json, and for each paper
+   write a 2-sentence `why` (strongest positive + limiting caveat). A credible step toward
    an oral PTER inhibitor is an automatic Tier 1.
 
-3. WRITE — follow docs/notion-spec.md exactly. If the Literature Radar database does
-   not exist yet, create it (title-only shell → PATCH schema onto the data source →
-   rows via data_source_id). Add one row per retained paper. ALWAYS also write a local
-   digest.md ordered by tier, then Score descending.
+3. WRITE — read the literature-radar-notion-sync skill and follow its references/notion-spec.md
+   exactly. If the Literature Radar database does not exist yet, create it (title-only shell →
+   PATCH schema onto the data source → rows via data_source_id). Add one row per retained
+   paper. ALWAYS also write a local digest.md ordered by tier, then Score descending.
 
 Rules: lens = new/underexploited biology with an undeveloped therapeutic angle and
 causal evidence — not "good paper," not journal prestige. Source label = the journal,
@@ -79,7 +79,7 @@ never "OpenAlex." If NOTION_API_KEY is missing, skip the Notion write but still
 produce digest.md. Finish with a one-line summary: "X Tier-1, Y Tier-2 from N scanned."
 ```
 
-Keep the runner thin: it orchestrates mine → rank → write and nothing more. The scientific logic stays in the skills, not the routine. See `lit-radar/examples/runners/` for the same idea under Hermes cron and a plain script.
+Keep the runner thin: it orchestrates mine → rank → write and nothing more. The scientific logic stays in the skills, not the routine. See `lit-radar/skills/research/literature-radar/references/runner-examples.md` for the same idea under Hermes cron and a plain script.
 
 > Note the deliberate limitation: this routine re-reads your lens from the prompt every run — it does **not** remember your reactions to yesterday's digest. Teaching it to learn "you already showed me that / more like this one" is exactly the jump to Demo 5.
 
@@ -135,6 +135,8 @@ You don't have to start from scratch — there are large, open libraries of scie
 ## Audience question
 
 What would you want your own reusable routine to watch or produce?
+
+
 
 
 
