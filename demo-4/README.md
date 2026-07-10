@@ -30,7 +30,40 @@ The implementation for this demo lives in the real literature-radar repo, mounte
 
 - `lit-radar/` → [`blakelash/literature-radar-skills`](https://github.com/blakelash/literature-radar-skills)
 
-That repo packages the minimal core: mining papers, ranking/triage, Notion sync, and an editable topic-lens that captures preferences over time. It sets up Demo 5.
+That repo packages the minimal core: mining papers (journal RSS + preprints + OpenAlex), ranking/triage against a fixed rubric, and a write-only Notion sink. It is deliberately monitoring-only — memory and preference-learning are Demo 5's job.
+
+## Example Claude Code routine prompt
+
+A routine is just a thin wrapper that calls the modules on a schedule. Point Claude Code at the `lit-radar/` skills and give it a prompt like this (save as a scheduled routine / `/skill`, or run daily via cron):
+
+```text
+You are running the Literature Radar monitoring routine. The skills and specs
+are in ./lit-radar (the literature-radar-skills repo). Do the following once:
+
+1. MINE — using docs/data-sources.md and templates/journal_feeds.json, fetch the
+   last 2 days of new papers from the journal RSS feeds (run
+   scripts/fetch_journal_rss.py), plus bioRxiv/medRxiv (version==1 only) and
+   OpenAlex for the configured journals. Normalize every item to
+   templates/candidate-schema.json and dedupe by DOI → canonical URL → title.
+
+2. RANK — apply docs/ranking-rubric.md. First the recall-first lexical prefilter
+   to cut volume, then the four-question triage on survivors. Keep only Tier 1
+   and Tier 2; drop everything else. Emit the fields in templates/scored-schema.json,
+   and for each paper write a 2-sentence `why` (strongest positive + limiting caveat).
+
+3. WRITE — follow docs/notion-spec.md exactly. If the Literature Radar database
+   does not exist yet, create it (title-only shell → PATCH schema onto the data
+   source → rows via data_source_id). Add one row per retained paper. ALWAYS also
+   write a local digest.md ordered by tier, then Score descending.
+
+Rules: lens = new/underexploited biology with an undeveloped therapeutic angle and
+causal evidence — not "good paper," not journal prestige. Source label = the journal,
+never "OpenAlex." If NOTION_API_KEY is missing, skip the Notion write but still
+produce digest.md. Finish by printing a one-line summary: "X Tier-1, Y Tier-2 from
+N scanned."
+```
+
+Keep the runner thin: it orchestrates mine → rank → write and nothing more. The scientific logic stays in the skills, not the routine. See `lit-radar/examples/runners/` for the same idea under Hermes cron and a plain script.
 
 ## Skills — a primer
 
@@ -79,10 +112,12 @@ You don't have to start from scratch — there are large, open libraries of scie
 - **bioSkills** (GPTomics — bioinformatics skills across many categories): https://github.com/GPTomics/bioSkills
 - **awesome-bio-agent-skills** (curated index aggregating skills from many repos): https://github.com/BioTender-max/awesome-bio-agent-skills
 
-> The literature-radar submodule in this demo is itself a small skill suite (mining / triage / Notion-sync / topic-lens) — a concrete example of packaging a scientific workflow as skills.
+> The literature-radar submodule in this demo is itself a small skill suite (mining / ranking / Notion-sync) — a concrete example of packaging a scientific workflow as skills.
 
 ## Audience question
 
 What would you want your own reusable routine to watch or produce?
+
+
 
 
