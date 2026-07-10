@@ -24,6 +24,21 @@ Place the paper in its wider scientific context: novelty, related work, competit
 
 This is the jump from *"read this paper well"* to *"situate this paper in the field."* The point is not better summarization — it is that the paper alone is almost never enough context for scientific judgment. This is also the first demo where the agent uses a **tool** (retrieval via MCP) rather than just reasoning over what it was handed.
 
+## Example prompt
+
+You don't even paste the paper — you hand over a **DOI** and let the retrieval tool fetch it, then pull the surrounding literature:
+
+```text
+Please pull the paper with DOI 10.64898/2026.01.26.701829 (use your Paperclip
+connector to fetch it), read it, then write me a report that contextualizes it
+in light of the prior literature. Don't limit yourself to the papers it cites —
+use Paperclip to search for other relevant work (competing approaches, prior art
+on the same target/axis, follow-ups) and fold that in. Flag where this paper is
+genuinely novel versus incremental, and cite every source with a resolvable link.
+```
+
+Why give a DOI instead of the PDF? It shows the agent doing retrieval itself — the tool goes and gets the paper *and* its context, rather than you doing the fetching. The instruction "don't only use the cited sources" is the whole point of Demo 2: a paper's own reference list is a biased, backward-looking sample, so the agent has to go find what the authors didn't (or couldn't) cite.
+
 ## Tools & MCP servers — the primer
 
 This is where the workshop introduces **tools**: external capabilities the model can call (search, code execution, database queries, an API). Two flavors matter:
@@ -64,6 +79,7 @@ In this demo, the retrieval capability is provided by **Paperclip**, the retriev
 ## Audience question
 
 What outside context would most change your opinion of a new paper?
+
 
 
 
