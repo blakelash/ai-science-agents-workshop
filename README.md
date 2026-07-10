@@ -1,6 +1,6 @@
 # Agent Workshop
 
-Scaffold repo for the agent workshop.
+Scaffold repo for the scientific agents workshop.
 
 ## Repo structure
 
@@ -21,9 +21,25 @@ agent-workshop/
 
 Put deck files in `slides/`.
 
+## Canonical demo arc
+
+Aligned to the Notion workshop outlines:
+
+1. **Demo 1 — Read**
+2. **Demo 2 — Contextualize**
+3. **Demo 3 — Decompose + Traceable Data Analysis**
+4. **Demo 4 — Monitor / Reusable Routine**
+5. **Demo 5 — Adapt with Memory**
+
+Narrative spine:
+
+> **Read → Contextualize → Decompose → Monitor → Adapt**
+>
+> Or in words: **from reading one paper to building a persistent research collaborator**.
+
 ## Demos
 
-### Demo 1 — paper + Claude prompt
+### Demo 1 — Read
 
 Files:
 - `demo-1/paper.pdf`
@@ -32,19 +48,19 @@ Suggested Claude prompt:
 
 > Read the attached paper and help me turn it into a workshop demo for scientific agents. Please do four things: (1) summarize the core claim in 5-7 bullets, (2) identify the specific steps that are deterministic pipeline components versus places where an agent or copilot could add judgment, (3) propose one bounded, realistic live demo based on this paper that could be reproduced in a workshop setting, and (4) list the validation checks and failure modes I should mention if I present this as an example of agentic science tooling. Keep the output practical and slide-ready.
 
-### Demo 2 — exploratory copilot
+### Demo 2 — Contextualize
 
-A lightweight reconnaissance demo: point the model at a paper, dataset, website, or repo and ask it to inspect the material, identify what matters, and suggest next steps.
+Take the same paper and place it in the broader field with retrieval-grounded context: novelty, related work, competition, and uncertainty.
 
-### Demo 3 — bounded agent
+### Demo 3 — Decompose + Traceable Data Analysis
 
-A more agentic demo: give the system a clear task, a small tool budget, and explicit validation criteria, then let it execute a short multi-step workflow and return a memo.
+Operationalize one central claim into a measurable question, run a notebook analysis, and produce a traceable evidence memo that links conclusions back to figures, tables, notebook cells, datasets, and assumptions.
 
-### Demo 4 — literature radar
+### Demo 4 — Monitor / Reusable Routine
 
-`demo-4/lit-radar/` is a nested git repo for the literature radar demo: signal arrives, papers are triaged, interesting leads are escalated, and outputs are packaged into something a scientist can actually review.
+Package the literature-radar workflow into a reusable routine/repo with sources, scoring rubric, dedupe logic, and digest outputs.
 
-### Demo 5 — review, critique, and escalation
+### Demo 5 — Adapt with Memory
 
-A closing demo focused on judgment: have the system critique its own output, identify uncertainty, and cleanly hand decisions back to the human.
+Turn the reusable routine into a persistent collaborator by remembering feedback, preferences, exclusions, and what the user has found interesting before.
 

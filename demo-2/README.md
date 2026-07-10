@@ -1,52 +1,50 @@
-# Demo 2 — exploratory copilot
+# Demo 2 — Contextualize
 
-## Point of the demo
+## Surface
 
-Show the lowest-friction useful behavior: you can hand an AI system a paper, repo, website, methods section, or dataset landing page and say, essentially, *"go take a look and tell me what matters."*
+Claude Cowork / retrieval workspace.
 
-This is not full autonomy. It is a **copilot / reconnaissance** mode.
+## Scientific job
 
-## What this demo should show
+Take the paper from Demo 1 and place it in the broader field.
 
-- fast orientation on unfamiliar material
-- extraction of the key claims, structure, and unknowns
-- a first-pass recommendation for what to inspect next
-- clear separation between **summary**, **interpretation**, and **speculation**
+## Inputs
 
-## Live arc
+- paper from Demo 1
+- literature-context questions
 
-1. Give the system one artifact: paper, repo, site, protocol, or folder.
-2. Ask for a quick map of what is there.
-3. Ask what looks important versus routine.
-4. Ask what the best next inspection step is.
-5. Ask what the system is still uncertain about.
+## What the system needs
 
-## Good prompt shape
+- retrieval-grounded scientific context
 
-> Go take a look at this and give me a practical orientation memo. What is this? What are the main claims or components? What seems important versus boilerplate? What would you inspect next if your goal were to understand whether there is a real scientific opportunity here?
+## Tools / access needed
 
-## Why this belongs in the workshop
+- citation context
+- related papers
+- target / pathway / disease resources as needed
 
-This is the easiest on-ramp for scientists: it is useful immediately, requires very little setup, and illustrates that a lot of value comes from **structured reconnaissance**, not just polished text generation.
+## Artifact
 
-## What it teaches
+A **context memo** covering:
+- novelty
+- related work
+- competition
+- uncertainty
 
-- where chat/copilot mode is already enough
-- how much value you can get before building an agent
-- that human judgment still sets the objective and evaluates the takeaways
+## Check / failure mode
 
-## Failure modes to mention
+- **Failure mode:** false novelty or invented outside context
+- **Check:** require retrieval evidence and citations for the contextual claims that matter
 
-- confident but shallow summaries
-- over-weighting the abstract or README and missing the supplement/details
-- confusing novelty with importance
-- making recommendations without showing evidence
+## Audience question
 
-## What a good output looks like
+- What outside context would most change your opinion of a new paper?
 
-A short memo with:
-- the core claim / structure
-- the 2-3 most important things to inspect next
-- explicit uncertainty
-- one suggested follow-up action
+## What is new here
+
+This is the jump from:
+- **Demo 1:** “read this paper well”
+- **Demo 2:** “situate this paper in the field”
+
+The point is not just better summarization. The point is that the paper alone is almost never enough context for scientific judgment.
 

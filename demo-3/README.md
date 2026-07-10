@@ -1,60 +1,61 @@
-# Demo 3 — bounded agent
+# Demo 3 — Decompose + Traceable Data Analysis
 
-## Point of the demo
+## Surface
 
-Move from *"tell me what you think"* to *"take a bounded action sequence and come back with a result."*
+Claude Science, with Claude Code / Codex / Cursor as fallback implementation surfaces.
 
-This is the first demo that should feel clearly **more agentic** than demo 2.
+## Scientific job
 
-## Core design rule
+Take a central claim from the anchor paper, operationalize it into a measurable question, run a notebook analysis, and produce a **traceable evidence memo** showing whether the available data support, weaken, or fail to address the claim.
 
-Use a task that is:
-- variable enough that a fixed pipeline is awkward
-- verifiable enough that success or failure is visible
-- bounded enough to run live without magic
+## Inputs
 
-## Good candidate task shapes
+- paper + context memo
+- central claim to test
+- accessible data / supplement / figure / table
 
-- inspect a paper/repo and produce a structured opportunity memo
-- intake a scientific question and draft a reproducible analysis plan
-- gather a few sources, compare them, and produce a ranked next-step recommendation
-- run a short multi-step retrieval → synthesis → verification loop
+## Subagents / specialists
 
-## Live arc
+- **Claim extractor** → claim card
+- **Analysis planner** → analysis plan
+- **DA agent** → notebook, plots, tables
+- **Reviewer / auditor** → traceability audit
+- **Synthesizer** → mini evidence memo
 
-1. Give the system a concrete goal.
-2. Give it explicit tools or sources it is allowed to use.
-3. Tell it what counts as a valid output.
-4. Let it perform a short sequence of steps.
-5. Review the returned memo and check whether it met the criteria.
+## What the system needs
 
-## Suggested framing line
+- claim operationalization
+- traceable notebook-based analysis
+- review / audit layer that checks whether conclusions trace to outputs
 
-> The difference here is not that the model got smarter; it is that we delegated a small amount of process control.
+## Tools / access needed
 
-## What to emphasize
+- analysis workspace / notebook
+- code execution
+- data or supplement access
 
-- the system is not doing open-ended science
-- the task is bounded and observable
-- the interesting part is the **loop**: inspect, decide, act, check, report
-- validation is part of the demo, not an afterthought
+## Artifact
 
-## Validation ideas
+- notebook
+- plots / tables
+- provenance / evidence table
+- mini evidence memo
 
-- did it use the allowed sources?
-- did it answer the requested question?
-- did it produce the requested schema or memo format?
-- did it flag uncertainty where evidence was thin?
-- can a human quickly inspect whether the recommendation is reasonable?
+## Check / failure mode
 
-## Failure modes to mention
+- **Failure mode:** the DA agent sounds convincing, but the conclusion is not traceable to notebook cells, figures, tables, datasets, or assumptions
+- **Check:** visibly show a provenance table linking:
+  - conclusion
+  - evidence artifact
+  - notebook source
+  - confidence
+  - caveat
 
-- wandering outside scope
-- doing too much instead of returning a clean partial result
-- hiding uncertainty
-- failing silently when a source/tool is weak
+## Audience question
 
-## Take-home message
+- If an agent says the data support a paper’s central conclusion, what would you want to inspect before trusting it?
 
-Agents are most compelling when they add **bounded judgment around reliable steps**, not when they pretend to be autonomous scientists.
+## What is new here
+
+This is where the workflow becomes about **specialization + verification**, not just “thinking harder.”
 

@@ -1,41 +1,52 @@
-# Demo 5 — review, critique, and escalation
+# Demo 5 — Adapt with Memory
 
-## Point of the demo
+## Surface
 
-End on the part that matters most in science: **judgment**.
+Hermes.
 
-The final demo should show that a useful system does not just generate an answer. It should also be able to:
-- critique its own output
-- identify what remains uncertain
-- state what evidence would change the conclusion
-- hand the decision back to the human cleanly
+## Scientific job
 
-## Why this is a good closing demo
+Turn the reusable routine from Demo 4 into a **persistent collaborator** by remembering feedback, preferences, exclusions, and what the user has found interesting before.
 
-It reinforces the main workshop thesis:
+## Why this new surface is needed
 
-> More agentic is not always better. The real question is where autonomy helps and where review must stay human.
+A reusable routine can repeat instructions, but it does not naturally maintain:
+- durable memory
+- feedback history
+- evolving user preferences
+- cross-run adaptation
 
-## Live arc
+## Capability contrast
 
-1. Take an output from demo 2, 3, or 4.
-2. Ask the system to review it adversarially.
-3. Ask what assumptions are carrying the conclusion.
-4. Ask what could be wrong.
-5. Ask what should happen next: accept, revise, escalate, or stop.
+| Capability | Reusable routine | Hermes / memory layer |
+|---|---|---|
+| Reusable workflow | yes | yes |
+| Durable memory | limited | yes |
+| Feedback history | awkward / manual | yes |
+| Cross-run adaptation | limited | yes |
 
-## Useful prompt shape
+## Artifact
 
-> Critique this output as if you were the skeptical collaborator on the project. What is well-supported, what is weakly supported, what is missing, and what should be verified before anyone acts on this?
+A before/after comparison:
+- generic shortlist
+- feedback-informed personalized shortlist
 
-## What this demo teaches
+## Check / failure mode
 
-- verification is part of the workflow
-- uncertainty should be surfaced, not hidden
-- good systems know when to stop and ask for help
-- the human still owns the consequential decision
+- **Failure mode:** memory exists but nothing meaningful changes, or the system overfits one old preference
+- **Check:** show exactly what prior feedback changed, for example:
+  - reject review articles
+  - prefer human genetic support
+  - care about structural tractability
+  - deprioritize mouse-only incrementals
 
-## Nice ending line
+## Audience question
 
-A strong agent is not one that always acts. It is one that knows when to **act, defer, or escalate**.
+- What feedback would you actually be willing to give a system so that it improves over time?
+
+## What is new here
+
+This demo introduces **memory + adaptation**.
+
+The point is not just recurring automation. The point is relationship-building over time: the system becomes more aligned with the scientist’s taste and workflow.
 

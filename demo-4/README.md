@@ -1,39 +1,56 @@
-# Demo 4 — literature radar
+# Demo 4 — Monitor / Reusable Routine
 
-## Point of the demo
+## Surface
 
-Show a recurring scientific workflow where an agent adds value by handling **variation** across many incoming papers while still producing something easy for a human to verify.
+Claude Code routines.
 
-This is the cleanest example in the repo of the pattern:
+## Scientific job
 
-> signal arrives -> context is gathered -> papers are triaged -> interesting items are escalated -> a human reviews the memo
+Package the literature-radar workflow into a **reusable routine** / repo of instructions, skills, configs, rubrics, and output formats.
 
-## Why this is a strong workshop demo
+## Inputs
 
-- scientists instantly understand the problem
-- the inputs vary every run
-- the output can be checked quickly
-- there is a natural escalation point back to the human
-- it demonstrates that the value is not "AI reads papers" but **AI helps manage attention**
+- topic or target area
+- sources list
+- scoring rubric
 
-## What to show live
+## What the system needs
 
-- where candidate papers come from
-- what the triage criteria are
-- what gets rejected early
-- what gets escalated
-- what the final memo / digest looks like
+- stable reusable workflow components
+- versioned routine logic
 
-## Good framing
+## Tools / access needed
 
-This is **not** a pipeline that simply dumps summaries. The agentic part is that the system has to decide what is interesting, what is weak, and what deserves human attention.
+- repo + routine surface
+- sources
+- configs
+- scoring files
+- digest output
 
-## What to stress
+## Artifact
 
-- novelty filters matter
-- ranking criteria matter
-- the final artifact has to be reviewable by a scientist
-- bad triage is often more dangerous than bad prose
+A routine repo with pieces like:
+- `README`
+- `skills/`
+- `config/`
+- `outputs/digest.md`
+
+## Why this new surface is needed
+
+By this point, the workflow is stable enough that it should be **reused, versioned, and inspectable** rather than rerun ad hoc each time.
+
+## Check / failure mode
+
+- **Failure mode:** reusable routine, but noisy or opaque outputs
+- **Check:** results are deduplicated, relevance reasons are specific, weak papers are excluded, and the routine is inspectable by another person
+
+## Audience question
+
+- What would you want your own reusable routine to watch or produce?
+
+## What is new here
+
+This step introduces **recurrence and monitoring over time**, not just one-off analysis.
 
 ## Files
 
