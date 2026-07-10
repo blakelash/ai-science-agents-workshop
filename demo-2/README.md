@@ -59,10 +59,11 @@ Almost every AI tool now has its own way to add MCP servers / connectors — oft
 
 > Tip: most servers install with a single `npx` (Node) or `uvx` (Python) command, then a small JSON config block in your client. Prefer `npx`/`uvx` so dependencies resolve automatically.
 
-The retrieval workspace used in this demo is **Paperclip** (https://paperclip.gxl.ai/); *other options: NotebookLM, Elicit, PaperQA2 / Edison Lit*.
+In this demo, the retrieval capability is provided by **Paperclip**, the retrieval MCP server (https://paperclip.gxl.ai/) — literature comes in through that server rather than being pasted into the prompt. *Other retrieval options: NotebookLM, Elicit, PaperQA2 / Edison Lit.*
 
 ## Audience question
 
 What outside context would most change your opinion of a new paper?
+
 
 
